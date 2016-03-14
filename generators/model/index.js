@@ -26,13 +26,19 @@ var ModelGenerator = scriptBase.extend({
     });
   },
 
+  _getAppClassName: function(){
+    //return pascalCase(this.appname);
+    return this.appname;
+  },
+
   writing: {
     createModelFiles: function () {
       this._writeTemplate(
         'model',
-        path.join(this.env.options.appPath, '/scripts/models', this.name),
+        //path.join(this.env.options.appPath, '/scripts/models', this.name),
+        path.join(this.env.options.appPath, this.env.options.modelPath, this.name),
         {
-          appClassName: pascalCase(this.appname),
+          appClassName: this._getAppClassName(),
           className: pascalCase(this.name)
         }
       );

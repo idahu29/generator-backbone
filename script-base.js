@@ -26,6 +26,12 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
       this.env.options.requirejs = this.options.requirejs;
     }
 
+    if (typeof this.env.options.modelPath === 'undefined') {
+      this.option('modelPath');
+      this.options.modelPath = this.config.get('modelPath') || '/scripts/models';
+      this.env.options.modelPath = this.options.modelPath;
+    }
+
   },
 
   _addScriptToIndex: function (script) {
